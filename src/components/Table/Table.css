@@ -1,0 +1,34 @@
+.table {
+  padding-top: 60px;
+}
+
+.table-head,
+.table-row {
+  display: flex;
+  padding: 16px;
+  color: gray;
+}
+
+.table-head {
+  background: #f2f2f2;
+}
+
+.table-head span:first-child,
+.table-row a:first-child {
+  width: 40%;
+}
+
+.table-head span:nth-child(2),
+.table-row a:nth-child(2) {
+  width: 40%;
+  flex-grow: 1;
+}
+
+.table-head span:last-child,
+.table-row span {
+  padding-left: 24px;
+}
+
+/* @media only screen and (min-width: 768px) {
+
+} */
