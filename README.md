@@ -8,7 +8,7 @@ This is an open source web app to shorten urls. I will be using ReactJS for the 
 
 - See demo front-end - https://short-url-ad.herokuapp.com/
 
-- See back-end - https://short-url-alex-disdier.herokuapp.com/
+- See back-end source code - https://github.com/alexdisdier/short-url-api
 
 ## ✅ Functionalities
 
