@@ -1,5 +1,6 @@
 .input-bar-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   padding-bottom: 44px;
 }
@@ -26,8 +27,8 @@
 }
 
 .input-bar-container button {
-  margin-left: 24px;
-  align-self: flex-start;
+  margin-top: 24px;
+  align-self: auto;
   padding: 10px;
   font-size: 18px;
   font-weight: 800;
@@ -42,6 +43,14 @@
   outline: none;
 }
 
-/* @media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
+  .input-bar-container {
+    flex-direction: row;
+  }
 
-} */
+  .input-bar-container button {
+    margin-top: 0;
+    margin-left: 24px;
+    align-self: flex-start;
+  }
+}

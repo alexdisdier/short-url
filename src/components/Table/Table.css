@@ -1,4 +1,5 @@
 .table {
+  display: flex;
   padding-top: 60px;
 }
 
@@ -10,10 +11,12 @@
 }
 
 .table-row {
+  flex-direction: column;
   border-bottom: 1px solid lightgray;
 }
 
 .table-head {
+  flex-direction: column;
   background: #f2f2f2;
 }
 
@@ -28,11 +31,20 @@
   flex-grow: 1;
 }
 
-.table-head span:last-child,
-.table-row span {
-  padding-left: 24px;
+@media only screen and (min-width: 768px) {
+  .table {
+    flex-direction: column;
+  }
+
+  .table-head {
+    flex-direction: row;
+  }
+
+  .table-row {
+    flex-direction: row;
+  }
+  .table-head span:last-child,
+  .table-row span {
+    padding-left: 24px;
+  }
 }
-
-/* @media only screen and (min-width: 768px) {
-
-} */

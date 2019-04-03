@@ -4,7 +4,9 @@ This is an open source project to shorten urls. We will be using ReactJS for the
 
 ## Usage example
 
-See demo - 🚧
+- See demo front-end - https://short-url-ad.herokuapp.com/
+
+- See back-end - https://short-url-alex-disdier.herokuapp.com/
 
 ## ✅ Functionalities
 
