@@ -1,0 +1,6 @@
+.error-message {
+  position: absolute;
+  padding: 10px;
+  right: 0;
+  color: red;
+}
