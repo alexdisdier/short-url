@@ -2,7 +2,7 @@
 
 # Synopsis
 
-This is an open source web app to shorten urls. I will be using ReactJS for the front-end and NodeJS for the back-end
+This is an open source web app to shorten urls. I used ReactJS for the front-end and NodeJS for the back-end
 
 ## Usage example
 
