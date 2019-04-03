@@ -2,7 +2,9 @@ import React from "react";
 import Line from "./Line/Line";
 
 import "./Table.css";
+
 const table = props => {
+  const { incVisits, copyToClipboard } = props;
   return (
     <div className="container">
       <div className="table">
@@ -12,13 +14,15 @@ const table = props => {
           <span>Visits</span>
         </div>
         {props.urls.map((e, index) => {
-          console.log(e);
           return (
             <Line
               key={index}
+              id={e._id}
               original={e.original}
-              short={e.shorten}
+              short={e.short}
               visits={e.visits}
+              incVisits={incVisits}
+              copyToClipboard={copyToClipboard}
             />
           );
         })}

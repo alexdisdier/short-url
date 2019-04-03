@@ -9,17 +9,21 @@
   color: gray;
 }
 
+.table-row {
+  border-bottom: 1px solid lightgray;
+}
+
 .table-head {
   background: #f2f2f2;
 }
 
 .table-head span:first-child,
-.table-row a:first-child {
+.table-row li:first-child {
   width: 40%;
 }
 
 .table-head span:nth-child(2),
-.table-row a:nth-child(2) {
+.table-row li:nth-child(2) {
   width: 40%;
   flex-grow: 1;
 }

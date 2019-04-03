@@ -1,0 +1,22 @@
+.short-url {
+  display: flex;
+}
+
+.short-url a {
+  width: 50%;
+}
+
+.clipboard {
+  width: 20%;
+  cursor: pointer;
+}
+
+.clipboard:hover svg {
+  fill: #5659c4;
+  transform: translateY(-2px);
+}
+
+.clipboard svg {
+  width: 20px;
+  transition: 0.3s;
+}

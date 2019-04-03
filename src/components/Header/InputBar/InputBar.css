@@ -1,26 +1,34 @@
-.input-bar {
+.input-bar-container {
   display: flex;
   justify-content: space-between;
   padding-bottom: 44px;
 }
 
-.input-bar input {
+.input-bar-container .input-bar {
+  display: flex;
+  flex-direction: column;
   flex: 1 60%;
+  position: relative;
+}
+
+.input-bar-container input {
   padding: 10px;
   font-size: 18px;
   border: none;
 }
 
-.input-bar input:focus {
+.input-bar-container input:focus {
   outline: none;
 }
 
-.input-bar button {
+.input-bar-container button {
   flex: 1 20%;
 }
 
-.input-bar button {
+.input-bar-container button {
   margin-left: 24px;
+  align-self: flex-start;
+  padding: 10px;
   font-size: 18px;
   font-weight: 800;
   border: none;
@@ -30,7 +38,7 @@
   cursor: pointer;
 }
 
-.input-bar button:focus {
+.input-bar-container button:focus {
   outline: none;
 }
 
