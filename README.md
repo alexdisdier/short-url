@@ -1,6 +1,8 @@
+![Shorten your URL web app by alex disdier](/screenshot.gif?raw=true "Gif Shorten your URL web app by alex disdier")
+
 # Synopsis
 
-This is an open source project to shorten urls. We will be using ReactJS for the front-end and NodeJS for the back-end
+This is an open source web app to shorten urls. I will be using ReactJS for the front-end and NodeJS for the back-end
 
 ## Usage example
 
@@ -13,10 +15,11 @@ This is an open source project to shorten urls. We will be using ReactJS for the
 - Enter an URL to shorten
 - Display a list of all the shorten URLs already created by users
 - Each shorten URL will be unique and a maximum length of 5 characters
-- Display the number of visits each shorten URLs already have
+- Display the number of visits each shorten URLs already has
 - The shorten URL will redirect to the original page
 - Each time a shorten URL is clicked, the counter for that URL will be incremented
-- What if the url already has been shorten ??? do you create new one or warn the user it's already listed
+- Copy the short URL created
+- URL Validation
 
 ## Directory Structure
 
@@ -27,12 +30,14 @@ shorten-url
 ├── src
 │   ├── assets
 │   │   ├── css
+│   │   ├── img
+│   │   ├── domain.js
 │   ├── components
-│   │   ├──
-│   │   └──
-│   ├── containers
-│   │   ├──
-│   │   └──
+│   │   ├── Header
+│   │   ├── Loading
+│   │   ├── Table
+│   │   │   └── Line
+│   │   └── Validation
 │   ├── App.css
 │   ├── App.js
 │   ├── App.test.js
@@ -53,7 +58,7 @@ Clone this repository :
 ```bash
 git clone https://github.com/alexdisdier/shorten-url.git
 
-cd leboncoin-client
+cd shorten-url
 ```
 
 Start the server:

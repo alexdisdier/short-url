@@ -1,4 +1,6 @@
 import React from "react";
+// source: https://react-tooltip.netlify.com/
+import ReactTooltip from "react-tooltip";
 import domain from "../../../assets/domain";
 import { ReactComponent as Copy } from "../../../assets/img/copy.svg";
 
@@ -19,12 +21,14 @@ const line = props => {
           {domain + short}
         </a>
         <span
+          data-tip="copy"
           className="clipboard"
           onClick={() => {
             const url = domain + short;
             copyToClipboard(url);
           }}
         >
+          <ReactTooltip place="bottom" type="dark" effect="solid" />
           <Copy />
         </span>
       </li>

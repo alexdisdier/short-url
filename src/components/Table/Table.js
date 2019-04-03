@@ -4,7 +4,7 @@ import Line from "./Line/Line";
 import "./Table.css";
 
 const table = props => {
-  const { urls, incVisits, copyToClipboard } = props;
+  const { urls, incVisits, copyToClipboard, windowWidth } = props;
   const lines = [];
 
   if (urls !== undefined) {
@@ -24,14 +24,14 @@ const table = props => {
   }
 
   return (
-    <div className="container">
+    <div className={windowWidth > 600 ? "container" : null}>
       <div className="table">
         <div className="table-head">
-          <span>Original URL</span>
-          <span>Short URL</span>
+          <span>Original {windowWidth > 600 ? "URL" : ""}</span>
+          <span>Short {windowWidth > 600 ? "URL" : ""}</span>
           <span>Visits</span>
         </div>
-        {lines}
+        <div>{lines}</div>
       </div>
     </div>
   );

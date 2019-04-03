@@ -13,12 +13,16 @@ class App extends Component {
   state = {
     urls: [],
     url: "",
-    copySuccess: "",
+    copy: false,
     isValid: true,
-    isLoading: true
+    isLoading: true,
+    windowWidth: window.innerWidth
   };
 
   async componentDidMount() {
+    window.addEventListener("resize", () =>
+      this.setState({ windowWidth: window.innerWidth })
+    );
     try {
       const response = await axios.get(domain + "url");
       const urls = response.data.urls;
@@ -35,13 +39,11 @@ class App extends Component {
     const name = event.target.name;
     const value = event.target.value;
     const stateToUpdate = {};
-
     if (this.isValidURL(value)) {
       this.setState({
         isValid: true
       });
     }
-
     stateToUpdate[name] = value;
     this.setState(stateToUpdate);
   };
@@ -51,9 +53,7 @@ class App extends Component {
     if (this.state.urls !== undefined) {
       urls = [...this.state.urls];
     }
-
     const { url } = this.state;
-
     try {
       if (this.isValidURL(url)) {
         const response = await axios.post(domain + "shorten", {
@@ -90,14 +90,22 @@ class App extends Component {
     }
   };
 
-  // Source: http://localhost:3001/A5Z6z
-  copyToClipboard = url => {
+  // Source: https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
+  copyToClipboard = async url => {
     const el = document.createElement("textarea");
     el.value = url;
     document.body.appendChild(el);
     el.select();
     document.execCommand("copy");
     document.body.removeChild(el);
+    await this.setState({
+      copy: true
+    });
+    setTimeout(() => {
+      this.setState({
+        copy: false
+      });
+    }, 2000);
   };
 
   // Function to check if the url entered is of a conventional format
@@ -116,8 +124,7 @@ class App extends Component {
   };
 
   renderTable = () => {
-    const { isLoading, urls } = this.state;
-
+    const { isLoading, urls, windowWidth } = this.state;
     if (isLoading) {
       return <Loading />;
     } else {
@@ -126,20 +133,25 @@ class App extends Component {
           urls={urls}
           incVisits={this.incVisits}
           copyToClipboard={this.copyToClipboard}
+          windowWidth={windowWidth}
         />
       );
     }
   };
 
   render() {
-    const { url, isValid } = this.state;
+    const { url, isValid, copy } = this.state;
     return (
       <div className="App">
+        <span className={copy ? "clipboard-show" : "clipboard-hidden"}>
+          Copied
+        </span>
         <Header
           url={url}
           isValid={isValid}
           addShort={this.addShort}
           handleShort={this.handleShort}
+          copy={copy}
         />
         {this.renderTable()}
       </div>

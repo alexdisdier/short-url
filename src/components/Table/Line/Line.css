@@ -2,21 +2,42 @@
   display: flex;
 }
 
-.short-url a {
-  width: 50%;
-}
-
 .clipboard {
-  width: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 8px;
   cursor: pointer;
 }
 
 .clipboard:hover svg {
   fill: #5659c4;
-  transform: translateY(-2px);
+  transform: translateX(-2px);
 }
 
 .clipboard svg {
   width: 20px;
   transition: 0.3s;
+}
+
+.table-row li {
+  overflow-x: scroll;
+  overflow-y: hidden;
+}
+
+.table-row li:last-child {
+  width: 40px;
+  text-align: left;
+}
+
+.success {
+  padding-right: 10px;
+  color: green;
+  transition: 0.2s;
+}
+
+@media only screen and (min-width: 768px) {
+  .clipboard {
+    align-items: flex-start;
+  }
 }

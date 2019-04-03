@@ -24,9 +24,6 @@
 
 .input-bar-container button {
   flex: 1 20%;
-}
-
-.input-bar-container button {
   margin-top: 24px;
   align-self: auto;
   padding: 10px;
@@ -37,6 +34,11 @@
   color: #5659c4;
   text-transform: uppercase;
   cursor: pointer;
+  transition: 0.3s;
+}
+
+.input-bar-container button:hover {
+  transform: translateX(-2px);
 }
 
 .input-bar-container button:focus {

@@ -15,3 +15,17 @@ body {
   padding-right: 15px;
   padding-left: 15px;
 }
+
+.clipboard-show {
+  position: absolute;
+  width: 100%;
+  background-color: green;
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  align-items: center;
+}
+
+.clipboard-hidden {
+  display: none;
+}
