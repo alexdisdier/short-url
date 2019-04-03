@@ -47,7 +47,11 @@ class App extends Component {
   };
 
   addShort = async () => {
-    const urls = [...this.state.urls];
+    let urls = [];
+    if (this.state.urls !== undefined) {
+      urls = [...this.state.urls];
+    }
+
     const { url } = this.state;
 
     try {

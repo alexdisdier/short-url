@@ -4,7 +4,25 @@ import Line from "./Line/Line";
 import "./Table.css";
 
 const table = props => {
-  const { incVisits, copyToClipboard } = props;
+  const { urls, incVisits, copyToClipboard } = props;
+  const lines = [];
+
+  if (urls !== undefined) {
+    for (let i = 0; i < urls.length; i++) {
+      lines.push(
+        <Line
+          key={i}
+          id={urls[i]._id}
+          original={urls[i].original}
+          short={urls[i].short}
+          visits={urls[i].visits}
+          incVisits={incVisits}
+          copyToClipboard={copyToClipboard}
+        />
+      );
+    }
+  }
+
   return (
     <div className="container">
       <div className="table">
@@ -13,19 +31,7 @@ const table = props => {
           <span>Short URL</span>
           <span>Visits</span>
         </div>
-        {props.urls.map((e, index) => {
-          return (
-            <Line
-              key={index}
-              id={e._id}
-              original={e.original}
-              short={e.short}
-              visits={e.visits}
-              incVisits={incVisits}
-              copyToClipboard={copyToClipboard}
-            />
-          );
-        })}
+        {lines}
       </div>
     </div>
   );
