@@ -20,6 +20,7 @@ This is an open source web app to shorten urls. I will be using ReactJS for the 
 - Each time a shorten URL is clicked, the counter for that URL will be incremented
 - Copy the short URL created
 - URL Validation
+- Mobile responsive
 
 ## Directory Structure
 
