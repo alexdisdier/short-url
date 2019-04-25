@@ -22,6 +22,11 @@ This is an open source web app to shorten urls. I will be using ReactJS for the 
 - URL Validation
 - Mobile responsive
 
+## 🚧 Working progress
+
+- Apollo Client on git branch apollo
+- Jest testing on git branch Jest
+
 ## Directory Structure
 
 ```bash
