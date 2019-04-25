@@ -9,8 +9,6 @@ import domain from "./assets/domain";
 import "./assets/css/reset.css";
 import "./App.css";
 
-export const hello = () => "Hello";
-
 class App extends Component {
   state = {
     urls: [],
