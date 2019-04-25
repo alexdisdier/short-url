@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
 
 import Header from "./components/Header/Header";
 import Table from "./components/Table/Table";
@@ -9,7 +11,10 @@ import domain from "./assets/domain";
 import "./assets/css/reset.css";
 import "./App.css";
 
-export const hello = () => "Hello";
+// apollo client setup
+const client = new ApolloClient({
+  uri: "http://localhost:4000/graphql"
+});
 
 class App extends Component {
   state = {
@@ -144,19 +149,21 @@ class App extends Component {
   render() {
     const { url, isValid, copy } = this.state;
     return (
-      <div className="App">
-        <span className={copy ? "clipboard-show" : "clipboard-hidden"}>
-          Copied
-        </span>
-        <Header
-          url={url}
-          isValid={isValid}
-          addShort={this.addShort}
-          handleShort={this.handleShort}
-          copy={copy}
-        />
-        {this.renderTable()}
-      </div>
+      <ApolloProvider client={client}>
+        <div className="App">
+          <span className={copy ? "clipboard-show" : "clipboard-hidden"}>
+            Copied
+          </span>
+          <Header
+            url={url}
+            isValid={isValid}
+            addShort={this.addShort}
+            handleShort={this.handleShort}
+            copy={copy}
+          />
+          {this.renderTable()}
+        </div>
+      </ApolloProvider>
     );
   }
 }
