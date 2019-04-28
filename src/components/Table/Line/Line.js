@@ -1,6 +1,4 @@
 import React from "react";
-import { gql } from "apollo-boost";
-import { graphql } from "react-apollo";
 // source: https://react-tooltip.netlify.com/
 import ReactTooltip from "react-tooltip";
 import domain from "../../../assets/domain";
@@ -8,20 +6,9 @@ import { ReactComponent as Copy } from "../../../assets/img/copy.svg";
 
 import "./Line.css";
 
-const getUrlsQuery = gql`
-  {
-    urls {
-      original
-      short
-      visits
-      id
-    }
-  }
-`;
-
 const line = props => {
   const { id, original, short, visits, incVisits, copyToClipboard } = props;
-  console.log(props);
+
   return (
     <ul className="table-row">
       <li>
@@ -51,4 +38,4 @@ const line = props => {
   );
 };
 
-export default graphql(getUrlsQuery)(line);
+export default line;

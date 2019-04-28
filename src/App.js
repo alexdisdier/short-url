@@ -5,7 +5,6 @@ import { ApolloProvider } from "react-apollo";
 
 import Header from "./components/Header/Header";
 import Table from "./components/Table/Table";
-import Loading from "./components/Loading/Loading";
 import domain from "./assets/domain";
 
 import "./assets/css/reset.css";
@@ -22,24 +21,13 @@ class App extends Component {
     url: "",
     copy: false,
     isValid: true,
-    isLoading: true,
     windowWidth: window.innerWidth
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     window.addEventListener("resize", () =>
       this.setState({ windowWidth: window.innerWidth })
     );
-    try {
-      const response = await axios.get(domain + "url");
-      const urls = response.data.urls;
-      await this.setState({
-        urls: urls,
-        isLoading: false
-      });
-    } catch (error) {
-      console.log(error);
-    }
   }
 
   handleShort = event => {
@@ -131,19 +119,11 @@ class App extends Component {
   };
 
   renderTable = () => {
-    const { isLoading, urls, windowWidth } = this.state;
-    if (isLoading) {
-      return <Loading />;
-    } else {
-      return (
-        <Table
-          urls={urls}
-          incVisits={this.incVisits}
-          copyToClipboard={this.copyToClipboard}
-          windowWidth={windowWidth}
-        />
-      );
-    }
+    const { windowWidth } = this.state;
+
+    return (
+      <Table copyToClipboard={this.copyToClipboard} windowWidth={windowWidth} />
+    );
   };
 
   render() {
