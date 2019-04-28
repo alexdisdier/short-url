@@ -24,8 +24,9 @@ This is an open source web app to shorten urls. I used ReactJS for the front-end
 
 ## 🚧 Working progress
 
-- Apollo Client on git branch apollo
-- Jest testing on git branch Jest
+- Apollo Client on git branch **apollo** (My Table functional component uses my GraphQL endpoint using apollo client)
+  - Need to implement my GraphQL resolvers
+- Jest testing on git branch **Jest**
 
 ## Directory Structure
 
@@ -65,6 +66,13 @@ Clone this repository :
 git clone https://github.com/alexdisdier/shorten-url.git
 
 cd shorten-url
+```
+
+Test different branches:
+
+```bash
+git checkout apollo
+git checkout Jest
 ```
 
 Start the server:
