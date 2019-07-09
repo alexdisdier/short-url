@@ -1,4 +1,6 @@
 import React from "react";
+import PropType from "prop-types";
+
 import InputBar from "./InputBar/InputBar";
 
 import "./Header.css";
@@ -16,6 +18,13 @@ const header = props => {
       />
     </header>
   );
+};
+
+header.propTypes = {
+  url: PropType.string.isRequired,
+  isValid: PropType.bool.isRequired,
+  addShort: PropType.func.isRequired,
+  handleShort: PropType.func.isRequired
 };
 
 export default header;
