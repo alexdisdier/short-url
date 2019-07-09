@@ -1,4 +1,6 @@
 import React from "react";
+import PropType from "prop-types";
+
 import Validation from "../../Validation/Validation";
 
 import "./InputBar.css";
@@ -29,6 +31,13 @@ const inputBar = props => {
       </div>
     </div>
   );
+};
+
+inputBar.propTypes = {
+  url: PropType.string.isRequired,
+  isValid: PropType.bool.isRequired,
+  addShort: PropType.func.isRequired,
+  handleShort: PropType.func.isRequired
 };
 
 export default inputBar;
