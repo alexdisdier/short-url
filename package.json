@@ -11,14 +11,12 @@
     "react-apollo": "^2.5.5",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
-    "react-tooltip": "^3.10.0",
-    "sinon": "^7.3.2",
-    "sinon-chai": "^3.3.0"
+    "react-tooltip": "^3.10.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --env=node",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
