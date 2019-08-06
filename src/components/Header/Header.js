@@ -1,9 +1,9 @@
-import React from "react";
-import PropType from "prop-types";
+import React from 'react';
+import PropType from 'prop-types';
 
-import InputBar from "./InputBar/InputBar";
+import InputBar from './InputBar/InputBar';
 
-import "./Header.css";
+import './Header.css';
 
 const header = props => {
   const { url, isValid, addShort, handleShort } = props;

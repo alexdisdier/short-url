@@ -1,18 +1,18 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import Header from "./components/Header/Header";
-import Table from "./components/Table/Table";
-import Loading from "./components/Loading/Loading";
-import domain from "./assets/domain";
+import Header from './components/Header/Header';
+import Table from './components/Table/Table';
+import Loading from './components/Loading/Loading';
+import domain from './assets/domain';
 
-import "./assets/css/reset.css";
-import "./App.css";
+import './assets/css/reset.css';
+import './App.css';
 
 class App extends Component {
   state = {
     urls: [],
-    url: "",
+    url: '',
     copy: false,
     isValid: true,
     isLoading: true,
@@ -20,11 +20,11 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    window.addEventListener("resize", () =>
+    window.addEventListener('resize', () =>
       this.setState({ windowWidth: window.innerWidth })
     );
     try {
-      const response = await axios.get(domain + "url");
+      const response = await axios.get(`${domain}url`);
       const urls = response.data.urls;
       await this.setState({
         urls: urls,
@@ -56,7 +56,7 @@ class App extends Component {
     const { url } = this.state;
     try {
       if (this.isValidURL(url)) {
-        const response = await axios.post(domain + "shorten", {
+        const response = await axios.post(`${domain}shorten`, {
           url: this.state.url
         });
         urls.push(response.data);
@@ -76,7 +76,7 @@ class App extends Component {
   incVisits = async id => {
     try {
       const urls = [...this.state.urls];
-      await axios.post(domain + "update/" + id);
+      await axios.post(`${domain}update/${id}`);
       for (let i = 0; i < urls.length; i++) {
         if (urls[i]._id === id) {
           urls[i].visits++;
@@ -92,11 +92,11 @@ class App extends Component {
 
   // Source: https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
   copyToClipboard = async url => {
-    const el = document.createElement("textarea");
+    const el = document.createElement('textarea');
     el.value = url;
     document.body.appendChild(el);
     el.select();
-    document.execCommand("copy");
+    document.execCommand('copy');
     document.body.removeChild(el);
     await this.setState({
       copy: true
@@ -112,13 +112,13 @@ class App extends Component {
   // source: https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
   isValidURL = str => {
     const pattern = new RegExp(
-      "^(https?:\\/\\/)?" +
-        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
-        "((\\d{1,3}\\.){3}\\d{1,3}))" +
-        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
-        "(\\?[;&a-z\\d%_.~+=-]*)?" +
-        "(\\#[-a-z\\d_]*)?$",
-      "i"
+      '^(https?:\\/\\/)?' +
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
+        '((\\d{1,3}\\.){3}\\d{1,3}))' +
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
+        '(\\?[;&a-z\\d%_.~+=-]*)?' +
+        '(\\#[-a-z\\d_]*)?$',
+      'i'
     );
     return !!pattern.test(str);
   };
@@ -127,25 +127,22 @@ class App extends Component {
     const { isLoading, urls, windowWidth } = this.state;
     if (isLoading) {
       return <Loading />;
-    } else {
-      return (
-        <Table
-          urls={urls}
-          incVisits={this.incVisits}
-          copyToClipboard={this.copyToClipboard}
-          windowWidth={windowWidth}
-        />
-      );
     }
+    return (
+      <Table
+        urls={urls}
+        incVisits={this.incVisits}
+        copyToClipboard={this.copyToClipboard}
+        windowWidth={windowWidth}
+      />
+    );
   };
 
   render() {
     const { url, isValid, copy } = this.state;
     return (
       <div className="App">
-        <span className={copy ? "clipboard-show" : "clipboard-hidden"}>
-          Copied
-        </span>
+        {copy && <span className="clipboard-show">Copied</span>}
         <Header
           url={url}
           isValid={isValid}

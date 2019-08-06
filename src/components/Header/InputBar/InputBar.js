@@ -1,9 +1,9 @@
-import React from "react";
-import PropType from "prop-types";
+import React from 'react';
+import PropType from 'prop-types';
 
-import Validation from "../../Validation/Validation";
+import Validation from '../../Validation/Validation';
 
-import "./InputBar.css";
+import './InputBar.css';
 
 const inputBar = props => {
   const { url, handleShort, addShort, isValid } = props;
@@ -13,7 +13,7 @@ const inputBar = props => {
         <div className="input-bar">
           <input
             style={{
-              boxShadow: !isValid && "0 0 0 3px red inset"
+              boxShadow: !isValid && '0 0 0 3px red inset'
             }}
             type="url"
             name="url"
@@ -34,10 +34,15 @@ const inputBar = props => {
 };
 
 inputBar.propTypes = {
-  url: PropType.string.isRequired,
-  isValid: PropType.bool.isRequired,
-  addShort: PropType.func.isRequired,
-  handleShort: PropType.func.isRequired
+  url: PropType.string,
+  isValid: PropType.bool,
+  addShort: PropType.func,
+  handleShort: PropType.func
+};
+
+inputBar.defaultValue = {
+  url: '',
+  isValid: false
 };
 
 export default inputBar;

@@ -1,4 +1,6 @@
 import React from "react";
+import PropType from "prop-types";
+
 import Line from "./Line/Line";
 
 import "./Table.css";
@@ -35,6 +37,13 @@ const table = props => {
       </div>
     </div>
   );
+};
+
+table.propTypes = {
+  urls: PropType.array,
+  incVisits: PropType.func.isRequired,
+  copyToClipboard: PropType.func.isRequired,
+  windowWidth: PropType.number.isRequired
 };
 
 export default table;
