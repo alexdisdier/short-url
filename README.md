@@ -1,3 +1,5 @@
+[![Build Status](https://semaphoreci.com/api/v1/alexdisdier/short-url/branches/master/shields_badge.svg)](https://semaphoreci.com/alexdisdier/short-url)
+
 ![Shorten your URL web app by alex disdier](/screenshot.gif?raw=true "Gif Shorten your URL web app by alex disdier")
 
 # Synopsis
@@ -26,7 +28,6 @@ This is an open source web app to shorten urls. I used ReactJS for the front-end
 
 - Apollo Client on git branch **apollo** (My Table functional component uses my GraphQL endpoint using apollo client)
   - Need to implement my GraphQL resolvers
-- Jest testing on git branch **Jest**
 
 ## Directory Structure
 
