@@ -6,9 +6,23 @@ import { ReactComponent as Copy } from "../../../assets/img/copy.svg";
 
 import "./Line.css";
 
-const line = props => {
-  const { id, original, short, visits, incVisits, copyToClipboard } = props;
+interface LineProps {
+  id: string;
+  original: string;
+  short: string;
+  visits: number;
+  incVisits: Function;
+  copyToClipboard: Function;
+}
 
+const line: React.FC<LineProps> = ({
+  id,
+  original,
+  short,
+  visits,
+  incVisits,
+  copyToClipboard
+}: LineProps) => {
   return (
     <ul className="table-row">
       <li>

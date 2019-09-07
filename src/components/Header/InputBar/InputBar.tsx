@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import Validation from "../../Validation/Validation";
+import Validation from '../../Validation/Validation';
 
-import "./InputBar.css";
+import './InputBar.css';
 
 interface InputBarProps {
   url?: string;
@@ -23,7 +23,7 @@ const inputBar: React.FC<InputBarProps> = ({
         <div className="input-bar">
           <input
             style={{
-              boxShadow: !isValid ? "0 0 0 3px red inset" : ""
+              boxShadow: !isValid ? '0 0 0 3px red inset' : ''
             }}
             type="url"
             name="url"
