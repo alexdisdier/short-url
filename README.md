@@ -59,6 +59,14 @@ shorten-url
 
 ```
 
+command line to change all your js files into ts
+
+```bash
+  for file in *.js; do mv "$file" "${file%.js}.ts"; done
+```
+
+Make sure to import all the @types for your modules.
+
 ## Running the project
 
 Clone this repository :

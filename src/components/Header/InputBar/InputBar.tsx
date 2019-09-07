@@ -1,19 +1,29 @@
 import React from 'react';
-import PropType from 'prop-types';
 
 import Validation from '../../Validation/Validation';
 
 import './InputBar.css';
 
-const inputBar = props => {
-  const { url, handleShort, addShort, isValid } = props;
+interface InputBarProps {
+  url?: string;
+  isValid: boolean;
+  addShort: Function;
+  handleShort(event: React.FormEvent<HTMLInputElement>): void;
+}
+
+const inputBar: React.FC<InputBarProps> = ({
+  url,
+  handleShort,
+  addShort,
+  isValid
+}: InputBarProps) => {
   return (
     <div className="container">
       <div className="input-bar-container">
         <div className="input-bar">
           <input
             style={{
-              boxShadow: !isValid && '0 0 0 3px red inset'
+              boxShadow: !isValid ? '0 0 0 3px red inset' : ''
             }}
             type="url"
             name="url"
@@ -31,18 +41,6 @@ const inputBar = props => {
       </div>
     </div>
   );
-};
-
-inputBar.propTypes = {
-  url: PropType.string,
-  isValid: PropType.bool,
-  addShort: PropType.func,
-  handleShort: PropType.func
-};
-
-inputBar.defaultValue = {
-  url: '',
-  isValid: false
 };
 
 export default inputBar;
