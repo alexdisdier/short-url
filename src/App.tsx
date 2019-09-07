@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import * as React from "react";
+import axios from "axios";
 
-import Header from './components/Header/Header';
-import Table from './components/Table/Table';
-import Loading from './components/Loading/Loading';
-import domain from './assets/domain';
+import Header from "./components/Header/Header";
+import Table from "./components/Table/Table";
+import Loading from "./components/Loading/Loading";
+import domain from "./assets/domain";
 
-import './assets/css/reset.css';
-import './App.css';
+import "./assets/css/reset.css";
+import "./App.css";
 
-class App extends Component {
-  state = {
+interface AppState {
+  urls: Array<string>;
+  url: string;
+  copy: boolean;
+  isValid: boolean;
+  isLoading: boolean;
+  windowWidth: number;
+}
+
+class App extends React.Component<{}, AppState> {
+  state: AppState = {
     urls: [],
-    url: '',
+    url: "",
     copy: false,
     isValid: true,
     isLoading: true,
@@ -20,7 +29,7 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    window.addEventListener('resize', () =>
+    window.addEventListener("resize", () =>
       this.setState({ windowWidth: window.innerWidth })
     );
     try {
@@ -35,10 +44,9 @@ class App extends Component {
     }
   }
 
-  handleShort = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    const stateToUpdate = {};
+  handleShort = (event: React.FormEvent<HTMLInputElement>) => {
+    const { name, value }: any = event.target;
+    const stateToUpdate: any = {};
     if (this.isValidURL(value)) {
       this.setState({
         isValid: true
@@ -49,7 +57,7 @@ class App extends Component {
   };
 
   addShort = async () => {
-    let urls = [];
+    let urls: any = [];
     if (this.state.urls !== undefined) {
       urls = [...this.state.urls];
     }
@@ -73,9 +81,9 @@ class App extends Component {
     }
   };
 
-  incVisits = async id => {
+  incVisits = async (id: string) => {
     try {
-      const urls = [...this.state.urls];
+      const urls: any = [...this.state.urls];
       await axios.post(`${domain}update/${id}`);
       for (let i = 0; i < urls.length; i++) {
         if (urls[i]._id === id) {
@@ -91,12 +99,12 @@ class App extends Component {
   };
 
   // Source: https://hackernoon.com/copying-text-to-clipboard-with-javascript-df4d4988697f
-  copyToClipboard = async url => {
-    const el = document.createElement('textarea');
+  copyToClipboard = async (url: string) => {
+    const el = document.createElement("textarea");
     el.value = url;
     document.body.appendChild(el);
     el.select();
-    document.execCommand('copy');
+    document.execCommand("copy");
     document.body.removeChild(el);
     await this.setState({
       copy: true
@@ -110,24 +118,22 @@ class App extends Component {
 
   // Function to check if the url entered is of a conventional format
   // source: https://stackoverflow.com/questions/5717093/check-if-a-javascript-string-is-a-url
-  isValidURL = str => {
+  isValidURL = (str: string) => {
     const pattern = new RegExp(
-      '^(https?:\\/\\/)?' +
-        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' +
-        '((\\d{1,3}\\.){3}\\d{1,3}))' +
-        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-        '(\\?[;&a-z\\d%_.~+=-]*)?' +
-        '(\\#[-a-z\\d_]*)?$',
-      'i'
+      "^(https?:\\/\\/)?" +
+        "((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|" +
+        "((\\d{1,3}\\.){3}\\d{1,3}))" +
+        "(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*" +
+        "(\\?[;&a-z\\d%_.~+=-]*)?" +
+        "(\\#[-a-z\\d_]*)?$",
+      "i"
     );
     return !!pattern.test(str);
   };
 
   renderTable = () => {
     const { isLoading, urls, windowWidth } = this.state;
-    if (isLoading) {
-      return <Loading />;
-    }
+    if (isLoading) return <Loading />;
     return (
       <Table
         urls={urls}
@@ -148,7 +154,6 @@ class App extends Component {
           isValid={isValid}
           addShort={this.addShort}
           handleShort={this.handleShort}
-          copy={copy}
         />
         {this.renderTable()}
       </div>
