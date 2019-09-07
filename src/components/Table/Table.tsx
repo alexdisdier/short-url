@@ -1,12 +1,24 @@
 import React from "react";
-import PropType from "prop-types";
+
+import { Urls } from "../../types";
 
 import Line from "./Line/Line";
 
 import "./Table.css";
 
-const table = props => {
-  const { urls, incVisits, copyToClipboard, windowWidth } = props;
+interface TableProps {
+  urls: Array<Urls>;
+  copyToClipboard: Function;
+  incVisits: Function;
+  windowWidth: number;
+}
+
+const table: React.FC<TableProps> = ({
+  urls,
+  incVisits,
+  copyToClipboard,
+  windowWidth
+}: TableProps) => {
   const lines = [];
 
   if (urls !== undefined) {
@@ -26,7 +38,7 @@ const table = props => {
   }
 
   return (
-    <div className={windowWidth > 600 ? "container" : null}>
+    <div className={windowWidth > 600 ? "container" : ""}>
       <div className="table">
         <div className="table-head">
           <span>Original {windowWidth > 600 ? "URL" : ""}</span>
@@ -37,13 +49,6 @@ const table = props => {
       </div>
     </div>
   );
-};
-
-table.propTypes = {
-  urls: PropType.array,
-  incVisits: PropType.func.isRequired,
-  copyToClipboard: PropType.func.isRequired,
-  windowWidth: PropType.number.isRequired
 };
 
 export default table;
