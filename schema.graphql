@@ -1,0 +1,36 @@
+type Mutation {
+  """adding a short url to the database"""
+  addUrl(original: String!): Url
+
+  """
+  everytime a user clicks on a url link, it increments the total number of visits for this url.
+  """
+  incrementUrlVisits(id: ID): Url
+}
+
+type Query {
+  urls(
+    """limit urls in the results"""
+    limit: Int
+  ): [Url]
+  urlByShortUrl(
+    """find the original url using the short url link"""
+    short: String
+  ): Url
+}
+
+"""The Url description"""
+type Url {
+  """The id of the url"""
+  id: ID
+
+  """The original url before being shorten"""
+  original: String
+
+  """The shorten url"""
+  short: String
+
+  """Then number of times the url link has been clicked"""
+  visits: Int
+}
+

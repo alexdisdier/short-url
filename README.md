@@ -99,3 +99,22 @@ npm run build
 ## Acknowledgments
 
 - This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Install:
+npm i react-relay
+npm i -D babel-plugin-relay graphql
+npm i babel-plugin-relay graphql
+sudo npm i -D babel-plugin-relay graphql
+npm i -D relay-compiler
+npm i -S relay-runtime
+
+npm install -g get-graphql-schema (one time)
+
+create environment.js
+
+add scripts:
+"fetch-schema": "get-graphql-schema https://short-url-alex-disdier.herokuapp.com/graphiql > ./schema.graphql",
+"relay": "relay-compiler --src ./src --schema ./schema.graphql"
+
+Change core-js/es6 not found when running relay:
+https://stackoverflow.com/questions/55308769/module-not-found-error-cant-resolve-core-js-es6
