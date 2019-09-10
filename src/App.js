@@ -11,29 +11,30 @@ import './App.css';
 
 class App extends Component {
   state = {
+    // urls: [{ id: "id", short: "test", original: "test", visits: 3 }],
     urls: [],
     url: '',
     copy: false,
     isValid: true,
-    isLoading: true,
+    isLoading: false,
     windowWidth: window.innerWidth
   };
 
-  async componentDidMount() {
-    window.addEventListener('resize', () =>
-      this.setState({ windowWidth: window.innerWidth })
-    );
-    try {
-      const response = await axios.get(`${domain}url`);
-      const urls = response.data.urls;
-      await this.setState({
-        urls: urls,
-        isLoading: false
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // async componentDidMount() {
+  //   window.addEventListener("resize", () =>
+  //     this.setState({ windowWidth: window.innerWidth })
+  //   );
+  //   try {
+  //     const response = await axios.get(`${domain}url`);
+  //     const urls = response.data.urls;
+  //     await this.setState({
+  //       urls: urls,
+  //       isLoading: false
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   handleShort = event => {
     const name = event.target.name;

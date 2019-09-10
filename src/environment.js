@@ -1,31 +1,33 @@
-const { Environment, Network, RecordSource, Store } = require('relay-runtime');
+import { Environment, Network, RecordSource, Store } from 'relay-runtime';
 
-// 2
-const store = new Store(new RecordSource());
-
-// 3
-const network = Network.create((operation, variables) => {
-  // 4
+// Define a function that fetches the results of an operation (query/mutation/etc)
+// and returns its results as a Promise:
+function fetchQuery(operation, variables, cacheConfig, uploadables) {
   return fetch('https://short-url-alex-disdier.herokuapp.com/graphiql', {
     method: 'POST',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json'
+      // Auth Headers goes here
     },
     body: JSON.stringify({
-      query: operation.text,
+      query: operation.text, // GraphQL text from input
       variables
     })
   }).then(response => {
     return response.json();
   });
-});
+}
 
-// 5
+// Create a network layer from the fetch function
+const network = Network.create(fetchQuery);
+
+const source = new RecordSource();
+const store = new Store(source);
+
 const environment = new Environment({
   network,
   store
 });
 
-// 6
 export default environment;

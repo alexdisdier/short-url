@@ -108,6 +108,18 @@ sudo npm i -D babel-plugin-relay graphql
 npm i -D relay-compiler
 npm i -S relay-runtime
 
+If you get this error:
+
+```bash
+Error: Cannot find module 'core-js/es6'
+```
+
+Run
+
+```bash
+npm i -S core-js@2.5.7
+```
+
 npm install -g get-graphql-schema (one time)
 
 create environment.js

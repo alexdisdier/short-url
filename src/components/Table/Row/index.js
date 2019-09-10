@@ -3,22 +3,23 @@ import PropType from 'prop-types';
 import { QueryRenderer } from 'react-relay';
 import graphql from 'babel-plugin-relay/macro';
 
-import LoadData from './LoadData';
+import Row from './Row';
 
-import environment from '../environment';
+import environment from '../../../environment';
 
 const query = graphql`
-  query LoadDataQuery {
+  query RowQuery {
     urls {
-      ...LoadData_url
+      ...Row_Row
     }
   }
 `;
 
 export const Renderer = ({ error, props: data }) => {
+  console.log('in index');
   if (error) return <div>error!</div>;
   if (!data) return <div>loading...</div>;
-  return <LoadData data={data} />;
+  return <Row data={data} />;
 };
 
 Renderer.propTypes = {
@@ -31,8 +32,9 @@ Renderer.defaultProps = {
   props: undefined
 };
 
-export const LoadDataRoot = props => {
+export const RowRoot = () => {
   const variables = {};
+  console.log('test');
 
   return (
     <QueryRenderer
@@ -44,13 +46,4 @@ export const LoadDataRoot = props => {
   );
 };
 
-LoadDataRoot.propTypes = {
-  environment: PropType.object.isRequired,
-  selectedOrganization: PropType.object
-};
-
-LoadDataRoot.defaultProps = {
-  selectedOrganization: null
-};
-
-export default LoadDataRoot;
+export default RowRoot;
