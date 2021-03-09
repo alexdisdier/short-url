@@ -1,16 +1,16 @@
-import * as React from "react";
-import axios from "axios";
+import * as React from 'react';
+import axios from 'axios';
 
-import Header from "./components/Header/Header";
-import Table from "./components/Table/Table";
-import Loading from "./components/Loading/Loading";
+import Header from './components/Header/Header';
+import Table from './components/Table/Table';
+import Loading from './components/Loading/Loading';
 
-import { addTextToClipboard, isValidURL } from "./utils";
-import domain from "./assets/domain";
-import { Urls } from "./types";
+import { addTextToClipboard, isValidURL } from './utils';
+import domain from './assets/domain';
+import { Urls } from './types';
 
-import "./assets/css/reset.css";
-import "./App.css";
+import './assets/css/reset.css';
+import './App.css';
 
 interface AppState {
   urls: Array<Urls>;
@@ -24,7 +24,7 @@ interface AppState {
 class App extends React.Component<{}, AppState> {
   state: AppState = {
     urls: [],
-    url: "",
+    url: '',
     copy: false,
     isValid: true,
     isLoading: true,
@@ -32,7 +32,7 @@ class App extends React.Component<{}, AppState> {
   };
 
   async componentDidMount() {
-    window.addEventListener("resize", () =>
+    window.addEventListener('resize', () =>
       this.setState({ windowWidth: window.innerWidth })
     );
     try {
@@ -60,17 +60,17 @@ class App extends React.Component<{}, AppState> {
   };
 
   addShort = async () => {
-    const { url } = this.state;
+    const { url, urls: stateUrls } = this.state;
 
     let urls: Array<Urls> = [];
 
-    if (this.state.urls !== undefined) {
-      urls = [...this.state.urls];
+    if (stateUrls !== undefined) {
+      urls = [...stateUrls];
     }
     try {
       if (isValidURL(url)) {
         const response = await axios.post(`${domain}shorten`, {
-          url: this.state.url
+          url
         });
         urls.push(response.data);
         await this.setState({
@@ -87,12 +87,13 @@ class App extends React.Component<{}, AppState> {
   };
 
   incVisits = async (id: string) => {
+    const { urls: stateUrls } = this.state;
     try {
-      const urls: Array<Urls> = [...this.state.urls];
+      const urls: Array<Urls> = [...stateUrls];
       await axios.post(`${domain}update/${id}`);
-      for (let i = 0; i < urls.length; i++) {
+      for (let i = 0; i < urls.length; i += 1) {
         if (urls[i]._id === id) {
-          urls[i].visits++;
+          urls[i].visits += 1;
         }
       }
       this.setState({
