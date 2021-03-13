@@ -8,9 +8,9 @@ This is an open source web app to shorten urls. I used ReactJS for the front-end
 
 ## Usage example
 
-- See demo front-end - https://short-url-ad.herokuapp.com/
+- See [demo front-end](https://ptitlink.live)
 
-- See back-end source code - https://github.com/alexdisdier/short-url-api
+- See [back-end source code]((https://ptitlink.herokuapp.com)
 
 ## ✅ Functionalities
 
