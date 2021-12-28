@@ -1,6 +1,6 @@
-[![Build Status](https://semaphoreci.com/api/v1/alexdisdier/short-url/branches/master/shields_badge.svg)](https://semaphoreci.com/alexdisdier/short-url)
+![Continuous Integration](https://github.com/alexdisdier/short-url/workflows/Continuous%20Integration/badge.svg?branch=master)
 
-![Shorten your URL web app by alex disdier](/screenshot.gif?raw=true "Gif Shorten your URL web app by alex disdier")
+![Shorten your URL web app by alex disdier](/screenshot.gif?raw=true 'Gif Shorten your URL web app by alex disdier')
 
 # Synopsis
 
@@ -87,13 +87,13 @@ git checkout Jest
 Start the server:
 
 ```bash
-npm start
+yarn start
 ```
 
 Build the project
 
 ```bash
-npm run build
+yarn build
 ```
 
 ## Built With
