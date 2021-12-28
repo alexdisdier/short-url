@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 // source: https://react-tooltip.netlify.com/
-import ReactTooltip from "react-tooltip";
-import domain from "../../../assets/domain";
-import { ReactComponent as Copy } from "../../../assets/img/copy.svg";
+import ReactTooltip from 'react-tooltip';
+import domain from '../../../assets/domain';
+// import { ReactComponent as Copy } from '../../../assets/img/copy.svg';
 
-import "./Line.css";
+import './Line.css';
 
 interface LineProps {
   id: string;
@@ -43,7 +43,7 @@ const line: React.FC<LineProps> = ({
           }}
         >
           <ReactTooltip place="bottom" type="dark" effect="solid" />
-          <Copy />
+          {/* <Copy /> */}
         </span>
       </li>
 
