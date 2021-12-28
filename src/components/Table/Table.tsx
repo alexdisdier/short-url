@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 
-import { Urls } from "../../types";
+import { Urls } from '../../types';
 
-import Line from "./Line/Line";
+import Line from './Line/Line';
 
-import "./Table.css";
+import './Table.css';
 
 interface TableProps {
   urls: Array<Urls>;
@@ -38,11 +38,11 @@ const table: React.FC<TableProps> = ({
   }
 
   return (
-    <div className={windowWidth > 600 ? "container" : ""}>
+    <div className={windowWidth > 600 ? 'container' : ''}>
       <div className="table">
         <div className="table-head">
-          <span>Original {windowWidth > 600 ? "URL" : ""}</span>
-          <span>Short {windowWidth > 600 ? "URL" : ""}</span>
+          <span>Original {windowWidth > 600 ? 'URL' : ''}</span>
+          <span>Short {windowWidth > 600 ? 'URL' : ''}</span>
           <span>Visits</span>
         </div>
         <div>{lines}</div>

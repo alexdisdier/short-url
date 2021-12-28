@@ -1,17 +1,17 @@
-import React from "react";
-import { shallow } from "enzyme";
+import React from 'react';
+import { shallow } from 'enzyme';
 
-import InputBar from "./InputBar";
+import InputBar from './InputBar';
 
-describe("<InputBar /> rendering", () => {
-  it("should render one input", () => {
+describe('<InputBar /> rendering', () => {
+  it('should render one input', () => {
     const wrapper = shallow(<InputBar />);
-    expect(wrapper.find("input").length).toEqual(1);
+    expect(wrapper.find('input').length).toEqual(1);
   });
 
-  it("should render one button", () => {
+  it('should render one button', () => {
     const wrapper = shallow(<InputBar />);
-    expect(wrapper.find("button").length).toEqual(1);
+    expect(wrapper.find('button').length).toEqual(1);
     expect(wrapper).toMatchInlineSnapshot(`
 <div
   className="container"

@@ -1,18 +1,18 @@
-import React from "react";
-import { shallow } from "enzyme";
+import React from 'react';
+import { shallow } from 'enzyme';
 
-import Header from "./Header";
+import Header from './Header';
 
-describe("Header", () => {
+describe('Header', () => {
   const props = {
-    url: "url",
+    url: 'url',
     isValid: true,
     addShort: jest.fn(),
     handleShort: jest.fn()
   };
 
-  describe("render()", () => {
-    it("renders a header with an input bar", () => {
+  describe('render()', () => {
+    it('renders a header with an input bar', () => {
       const wrapper = shallow(<Header {...props} />);
       expect(wrapper).toMatchInlineSnapshot(`
 <header>
