@@ -5,9 +5,9 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 import Amplify from 'aws-amplify';
-import awsmobile from './aws-exports.js';
+import awsconfig from './aws-exports';
 
-Amplify.configure(awsmobile);
+Amplify.configure(awsconfig);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
