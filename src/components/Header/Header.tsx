@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react';
 
-import InputBar from "./InputBar/InputBar";
+import InputBar from './InputBar/InputBar';
 
-import "./Header.css";
+import './Header.css';
 
 interface HeaderProps {
   url?: string;

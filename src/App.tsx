@@ -1,16 +1,16 @@
-import * as React from "react";
-import axios from "axios";
+import * as React from 'react';
+import axios from 'axios';
 
-import Header from "./components/Header/Header";
-import Table from "./components/Table/Table";
-import Loading from "./components/Loading/Loading";
+import Header from './components/Header/Header';
+import Table from './components/Table/Table';
+import Loading from './components/Loading/Loading';
 
-import { addTextToClipboard, isValidURL } from "./utils";
-import domain from "./assets/domain";
-import { Urls } from "./types";
+import { addTextToClipboard, isValidURL } from './utils';
+import domain from './assets/domain';
+import { Urls } from './types';
 
-import "./assets/css/reset.css";
-import "./App.css";
+import './assets/css/reset.css';
+import './App.css';
 
 interface AppState {
   urls: Array<Urls>;
@@ -24,7 +24,7 @@ interface AppState {
 class App extends React.Component<{}, AppState> {
   state: AppState = {
     urls: [],
-    url: "",
+    url: '',
     copy: false,
     isValid: true,
     isLoading: true,
@@ -32,18 +32,18 @@ class App extends React.Component<{}, AppState> {
   };
 
   async componentDidMount() {
-    window.addEventListener("resize", () =>
+    window.addEventListener('resize', () =>
       this.setState({ windowWidth: window.innerWidth })
     );
     try {
       const response = await axios.get(`${domain}url`);
-      const urls = response.data.urls;
+      const { urls } = response.data;
       await this.setState({
         urls: urls,
         isLoading: false
       });
     } catch (error) {
-      console.log(error);
+      console.log({ error });
     }
   }
 
