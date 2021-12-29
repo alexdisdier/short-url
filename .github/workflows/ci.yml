@@ -24,8 +24,9 @@ jobs:
     - name: Install Dependencies
       run: npm install
 
-    - name: Amplify Init
-      run: amplify init
+
+    - name: Add AWS export  
+      run: npm run create:aws:export
 
     - name: Lint
       run: npm run lint
