@@ -125,3 +125,5 @@ amplify push
 ### aws troubleshooting
 
 https://docs.amplify.aws/cli/graphql/authorization-rules
+
+### retrieger a build
