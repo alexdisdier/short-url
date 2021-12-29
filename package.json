@@ -7,7 +7,8 @@
     "build": "react-scripts build",
     "test:unit": "react-scripts test --env=node",
     "lint": "eslint './src/**/*.{js,jsx,ts,tsx}' --quiet --fix",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "create:aws:export": "node scripts/create-aws-export.js"
   },
   "browserslist": [
     ">0.2%",
@@ -24,6 +25,7 @@
     "@typescript-eslint/eslint-plugin": "^4.17.0",
     "@typescript-eslint/parser": "^4.17.0",
     "apollo-boost": "^0.3.1",
+    "aws-amplify": "^4.3.11",
     "axios": "^0.21.1",
     "chai": "^4.2.0",
     "eslint": "^7.11.0",
