@@ -3,9 +3,8 @@
 //  This file was automatically generated and should not be edited.
 
 export type CreateUrlInput = {
-  id?: string | null,
   original: string,
-  short?: string | null,
+  short: string,
   visits?: number | null,
 };
 

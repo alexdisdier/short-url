@@ -6,7 +6,7 @@ import Header from './components/Header/Header';
 import Table from './components/Table/Table';
 import Loading from './components/Loading/Loading';
 
-import { addTextToClipboard, isValidURL } from './utils';
+import { addTextToClipboard, isValidURL, addUrl } from './utils';
 import { listUrls } from './graphql/queries';
 import domain from './assets/domain';
 import { Urls } from './types';
@@ -38,19 +38,18 @@ class App extends React.Component<{}, AppState> {
       this.setState({ windowWidth: window.innerWidth })
     );
     try {
-      const response = await axios.get(`${domain}url`);
-      const { urls } = response.data;
-
-      const apiData: any = await API.graphql(graphqlOperation(listUrls));
-
-      console.log({ apiData });
+      const {
+        data: {
+          listUrls: { items: urls }
+        }
+      }: any = await API.graphql(graphqlOperation(listUrls, { limit: 100 }));
 
       await this.setState({
-        urls: urls,
+        urls,
         isLoading: false
       });
     } catch (error) {
-      console.log({ error });
+      console.error({ error });
     }
   }
 
@@ -76,12 +75,14 @@ class App extends React.Component<{}, AppState> {
     }
     try {
       if (isValidURL(url)) {
-        const response = await axios.post(`${domain}shorten`, {
-          url: this.state.url
-        });
-        urls.push(response.data);
+        const url = await addUrl(this.state.url);
+
+        console.log('addUrl', { url });
+
+        urls.push(url);
+
         await this.setState({
-          urls: urls
+          urls
         });
       } else {
         this.setState({
@@ -106,6 +107,7 @@ class App extends React.Component<{}, AppState> {
         urls: urls
       });
     } catch (error) {
+      //@ts-ignore
       console.error(error.message);
     }
   };

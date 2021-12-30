@@ -116,6 +116,12 @@ yarn build
 amplify pull
 ```
 
+### update your types locally
+
+```bash
+ amplify codegen
+```
+
 ### push local changes upstream
 
 ```bash
@@ -126,4 +132,34 @@ amplify push
 
 https://docs.amplify.aws/cli/graphql/authorization-rules
 
-### retrieger a build
+- since we gitignore aws-exports, for CI purposes, we need to create a file of the same name when running remotely a build.
+
+  - I added a script `npm run create:aws:export` to `package.json` which I run in a [GitHub action](.github/workflows/ci.yml) before running the build.
+  - [create-aws-export](scripts/create-aws-export.js)
+
+- since aws hook will automatically deploy once we merge branch into master, we need to deploy the backend along with the frontend. For this purpose, we'll download the amplify.yml to our project and add the backend build.
+
+  - aws amplify -> App settings -> Build settings
+  - https://github.com/aws-amplify/amplify-console/issues/470#issuecomment-622191679
+  - https://docs.aws.amazon.com/amplify/latest/userguide/build-settings.html#frontend-with-backend
+
+- one more step: within Amplify Console - Advanced Settings, we should configure the version of Amplify CLI used for our CI/CD builds to the latest. Then add a new role. This will allows amplify to build the backend and provide a aws-exports file when building the frontend.
+
+  - aws amplify -> App settings -> Build settings
+  - https://github.com/aws-amplify/amplify-cli/issues/6117#issuecomment-742623717
+
+If we accidentally commit some aws files which should be kept secret. In order to delete file from Git history, you have to use the “git filter-branch” command and specify the command to be executed on all the branches of your Git history.
+
+`<path_to_file>` is the path from root.
+
+```bash
+## from anywhere
+brew install git-filter-repo
+
+## from your project folder root
+git filter-branch --force --index-filter --prune-empty "git rm --cached --ignore-unmatch <path_to_file>" HEAD
+
+git push
+```
+
+- https://devconnected.com/how-to-delete-file-on-git/
