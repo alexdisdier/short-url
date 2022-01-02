@@ -1,13 +1,13 @@
 import * as React from 'react';
 import axios from 'axios';
-import { API, graphqlOperation } from 'aws-amplify';
+// import { API, graphqlOperation } from 'aws-amplify';
 
 import Header from './components/Header/Header';
 import Table from './components/Table/Table';
 import Loading from './components/Loading/Loading';
 
 import { addTextToClipboard, isValidURL } from './utils';
-import { listUrls } from './graphql/queries';
+// import { listUrls } from './graphql/queries';
 import domain from './assets/domain';
 import { Urls } from './types';
 
@@ -41,9 +41,9 @@ class App extends React.Component<{}, AppState> {
       const response = await axios.get(`${domain}url`);
       const { urls } = response.data;
 
-      const apiData: any = await API.graphql(graphqlOperation(listUrls));
+      // const apiData: any = await API.graphql(graphqlOperation(listUrls));
 
-      console.log({ apiData });
+      // console.log({ apiData });
 
       await this.setState({
         urls: urls,
