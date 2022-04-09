@@ -71,8 +71,6 @@ class App extends React.Component<{}, AppState> {
     // testing createUrl mutation aws
     // const res = await addUrl(this.state.url);
 
-    // console.log('createUrl', { res });
-
     const { url } = this.state;
 
     let urls: Array<Urls> = [];
